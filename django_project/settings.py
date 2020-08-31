@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 #SECRET_KEY = 'nh^tw$q=0@7%$js=mb%-_-3=l+@o(#1g)!r)ks16fc=$ijqmga'
 SECRET_KEY=os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = (os.environ.get('DEBUG_VALUE')=='True')
 
 ALLOWED_HOSTS = ['myfirstblogwebapp.herokuapp.com']
 
