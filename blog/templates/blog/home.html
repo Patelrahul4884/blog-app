@@ -12,6 +12,32 @@
         </div>
         <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
         <p class="article-content">{{ post.content }}</p>
+        <div>
+            <p style="font-weight: bold;">Comments</p>
+        </div>
+    {% if post.comment_set.first %}
+    <article class="media comment-section">
+        <img class="rounded-circle comment-img" src="{{ post.comment_set.first.author.profile.image.url }}" alt="">
+        <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="{% url 'user-posts' post.comment_set.first.author.username %}">{{ post.comment_set.first.author }}</a>
+                <small class="text-muted">{{ post.comment_set.first.date_posted|timesince }}</small>
+            </div>
+            <small>{{ post.comment_set.first.content }}</small>
+        </div>
+    </article>
+    <a class="text-muted" href="{% url 'post-detail' post.id %}">view all {{ post.comment_set.all|length }} comments</a>
+    {% else %}
+    <small>No Comments</small>
+    {% endif %}
+
+
+
+        <div class="form-group">
+            <a class="btn btn-outline-info" style="float:Right; font-size: 12px;" href="{% url 'post-comment' post.id %}">
+                Add comment
+            </a>
+        </div>
     </div>
 </article>
 {% endfor %}

@@ -9,6 +9,23 @@
         </div>
         <h2 class="article-title">{{ object.title }}</h2>
         <p class="article-content">{{ object.content }}</p>
+
+        {% if object.comment_set.all %}
+        {% for comment in object.comment_set.all %}
+        <article class="media content-section">
+            <img class="rounded-circle comment-img" src="{{ comment.author.profile.image.url }}" alt="">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="{% url 'user-posts' comment.author.username %}">{{ comment.author }}</a>
+                    <small class="text-muted">{{ comment.date_posted|timesince }}</small>
+                </div>
+                <small>{{ comment.content }}</small>
+            </div>
+        </article>
+        {% endfor %}
+        {% else %}
+        <small>No Comments</small>
+        {% endif %}
         {% if object.author == user %}
         <div>
             <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>

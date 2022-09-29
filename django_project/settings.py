@@ -20,12 +20,13 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'nh^tw$q=0@7%$js=mb%-_-3=l+@o(#1g)!r)ks16fc=$ijqmga'
-SECRET_KEY=os.environ.get('SECRET_KEY')
+SECRET_KEY = 'nh^tw$q=0@7%$js=mb%-_-3=l+@o(#1g)!r)ks16fc=$ijqmga'
+# SECRET_KEY=os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (os.environ.get('DEBUG_VALUE')=='True')
+# DEBUG = (os.environ.get('DEBUG_VALUE')=='True')
+DEBUG = True
 
-ALLOWED_HOSTS = ['myfirstblogwebapp.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -133,7 +134,9 @@ EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
-EMAIL_HOST_USER=os.environ.get('EMAIL_USER')
-EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_PASS')
+EMAIL_HOST_USER='patelr4142@gmail.com'
+EMAIL_HOST_PASSWORD='ybariqsmoxftfhqz'
+# EMAIL_HOST_USER=os.environ.get('EMAIL_USER')
+# EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_PASS')
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
